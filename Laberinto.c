@@ -6,15 +6,12 @@ int main(){
     int filas=13;
     int columnas=25;
     int matriz[13][25];
-    srand(time(NULL));
-    int xentrada=rand()%(filas-1);
-    int xsalida=rand()%(filas-1);
     for(int i=0;i<filas;i++){
         for(int j=0;j<columnas;j++){
             if(i==0||j==0||i==(filas-1)||j==(columnas-1)){
-                matriz[i][j]=1;
-                if((i==1&&j==0)||(i==(filas-1)&&j==(columnas-2))){
-                    matriz[i][j]=2;
+                matriz[i][j]=2;
+                if((i==1&&j==0)||(i==(filas-2)&&j==(columnas-1))){
+                    matriz[i][j]=3;
                 }
             } else{
                 matriz[i][j]=0;
@@ -24,6 +21,7 @@ int main(){
     float densidad=1; 
     densidad=(filas*columnas*densidad)/4;
     int Fparedes=densidad*8;
+    srand(time(NULL));
     for(int i=0;i<densidad;i++){
         int x=rand()%(columnas-2); // 2 - 16
         x=(x/2)*2+1;
@@ -42,13 +40,35 @@ int main(){
             }
         }
     }
+    for(int i=0;i<2;i++){
+        int bloqran;
+        do{
+            bloqran=rand()%(columnas-1);
+        } while(bloqran<=3||bloqran>=22);
+        if(i==0){
+            matriz[1][bloqran]=1;
+        } else{
+            matriz[11][bloqran]=1;
+        }
+        int bloqran2;
+        do{
+            bloqran2=rand()%(filas-1);
+        } while(bloqran2<=3||bloqran2>=22||bloqran2==bloqran||bloqran2==(bloqran-1)||bloqran2==(bloqran+1));
+        if(i==0){
+            matriz[1][bloqran2]=1;
+        } else{
+            matriz[11][bloqran2]=1;
+        }
+    }
     matriz[1][1]=0;
-    matriz[filas-1][columnas-2]=0;
+    matriz[filas-2][columnas-2]=0;
     for(int i=0;i<filas;i++){
         for(int j=0;j<columnas;j++){
             if(matriz[i][j]==1){
                 printf("%c", 178);
             }else if(matriz[i][j]==2){
+                printf("H");
+            }else if(matriz[i][j]==3){
                 printf("X");
             }else if(matriz[i][j]==0){
                 printf(" ");
