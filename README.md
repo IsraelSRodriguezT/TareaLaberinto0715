@@ -7,5 +7,5 @@ Este repositorio contiene el ejercicio planteado en la clase el 10 de julio, el 
 A continuación se incluye el acceso directo a la ubicación del archivo: 
 
 1. **Laberintos**
-   - https://github.com/IsraelSRodriguezT/TareaLaberinto0715/blob/main/laberintov2.c
+   - https://github.com/IsraelSRodriguezT/TareaLaberinto0715/blob/main/Laberinto.c
 
