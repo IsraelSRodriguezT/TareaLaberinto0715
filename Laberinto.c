@@ -2,7 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 int main(){
+    FILE *laberintotext; 
+    laberintotext = fopen("laberintotext", "w");
+
     printf("Bienvenido al programa para mostrar un laberinto\n");
+    fprintf(laberintotext, "Bienvenido al programa para mostrar un laberinto\n");
     int filas=13;
     int columnas=25;
     int matriz[13][25];
@@ -65,16 +69,21 @@ int main(){
     for(int i=0;i<filas;i++){
         for(int j=0;j<columnas;j++){
             if(matriz[i][j]==1){
-                printf("%c", 178);
+                printf("1");
+                fprintf(laberintotext, "1" );
             }else if(matriz[i][j]==2){
                 printf("H");
+                fprintf(laberintotext, "H");
             }else if(matriz[i][j]==3){
                 printf("X");
+                fprintf(laberintotext, "X");
             }else if(matriz[i][j]==0){
                 printf(" ");
+                fprintf(laberintotext, " ");
             }
         }
         printf("\n"); //Para hacer un salto de linea al momento de cambiar de fila
+        fprintf(laberintotext, "\n");
     }
     return 0;
 }
